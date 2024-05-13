@@ -1,0 +1,175 @@
+{
+	"info": {
+		"_postman_id": "61f25851-94d0-4f50-b92c-4f4a61380dac",
+		"name": "Z - CB-Reservation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26587236"
+	},
+	"item": [
+		{
+			"name": "PurchaseTicket",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"from\": \"Central Market\",\n    \"to\": \"London\",\n    \"price\": 51.0,\n    \"users\": {\n        \"firstName\": \"Manoj\",\n        \"email\": \"manoj@cb.com\"\n    },\n    \"seats\": [\n        {\n            \"section\": \"SECTION_A\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7080/api/v1/tickets/purchase",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7080",
+					"path": [
+						"api",
+						"v1",
+						"tickets",
+						"purchase"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Manoj\",\n    \"lastName\": \"B\",\n    \"email\": \"manoj@cb.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7080/api/v1/users/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7080",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PrintReceipt",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7080/api/v1/tickets/receipt/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7080",
+					"path": [
+						"api",
+						"v1",
+						"tickets",
+						"receipt",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SeatsBySection",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7080/api/v1/seats/seatsBySection?section=SECTION_B",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7080",
+					"path": [
+						"api",
+						"v1",
+						"seats",
+						"seatsBySection"
+					],
+					"query": [
+						{
+							"key": "section",
+							"value": "SECTION_B"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ModifySeat",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7080/api/v1/seats/2/modifyTo?section=SECTION_B",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7080",
+					"path": [
+						"api",
+						"v1",
+						"seats",
+						"2",
+						"modifyTo"
+					],
+					"query": [
+						{
+							"key": "section",
+							"value": "SECTION_B"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteTicket",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7080/api/v1/tickets/cancel/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7080",
+					"path": [
+						"api",
+						"v1",
+						"tickets",
+						"cancel",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
