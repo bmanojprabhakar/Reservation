@@ -9,6 +9,8 @@ import com.codebees.reservation.entity.Users;
 import com.codebees.reservation.exception.TicketNotFoundException;
 import com.codebees.reservation.exception.UserNotFoundException;
 import com.codebees.reservation.mapper.TicketsMapper;
+import com.codebees.reservation.repository.PassengerRepository;
+import com.codebees.reservation.repository.SeatRepository;
 import com.codebees.reservation.repository.TicketRepository;
 import com.codebees.reservation.repository.UserRepository;
 import com.codebees.reservation.service.TicketService;
@@ -34,6 +36,12 @@ class TicketServiceImplTest {
     @Mock
     UserRepository userRepository;
 
+    @Mock
+    SeatRepository seatRepository;
+
+    @Mock
+    PassengerRepository passengerRepository;
+
     private TicketService ticketService;
     AutoCloseable autoCloseable;
     TicketsDto ticketsDto;
@@ -41,7 +49,7 @@ class TicketServiceImplTest {
     @BeforeEach
     void setUp() {
         autoCloseable = MockitoAnnotations.openMocks(this);
-        ticketService = new TicketServiceImpl(ticketRepository, userRepository);
+        ticketService = new TicketServiceImpl(ticketRepository, userRepository, seatRepository, passengerRepository);
         ticketsDto = new TicketsDto();
         ticketsDto.setFrom("Chicago");
         ticketsDto.setTo("New York");
@@ -50,7 +58,7 @@ class TicketServiceImplTest {
         ticketsDto.setUsers(userDto);
         SeatsDto seatsDto = new SeatsDto();
         seatsDto.setSection(Section.SECTION_A);
-        ticketsDto.setSeats(List.of(seatsDto));
+//        ticketsDto.setSeats(List.of(seatsDto));
     }
 
     @AfterEach

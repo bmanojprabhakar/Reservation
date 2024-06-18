@@ -1,5 +1,6 @@
 package com.codebees.reservation.dto;
 
+import com.codebees.reservation.entity.Section;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.Min;
@@ -35,7 +36,11 @@ public class TicketsDto {
     @NotNull(message = "User details are mandatory")
     private UserDto users;
 
-    @Schema(description = "Seat details", example = "SECTION_A")
-    @NotNull(message = "Seat details which contains the section is mandatory")
-    private List<SeatsDto> seats;
+    @Schema(description = "Section details", example = "SECTION_A")
+    @NotNull(message = "Section which is mandatory for ticket purchase")
+    private Section section;
+
+    @Schema(description = "Passenger details", example = "firstName: manoj, lastName: p, age: 22")
+    @NotNull(message = "Passenger details are mandatory for ticket booking")
+    private List<PassengerDto> passengers;
 }

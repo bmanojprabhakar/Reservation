@@ -1,8 +1,10 @@
 package com.codebees.reservation.mapper;
 
+import com.codebees.reservation.dto.PassengerDto;
 import com.codebees.reservation.dto.SeatsDto;
 import com.codebees.reservation.dto.TicketsDto;
 import com.codebees.reservation.dto.UserDto;
+import com.codebees.reservation.entity.Seat;
 import com.codebees.reservation.entity.Ticket;
 import com.codebees.reservation.entity.Users;
 import lombok.extern.slf4j.Slf4j;
@@ -24,13 +26,6 @@ public class TicketsMapper {
         ticket.setFromLocation(ticketRequest.getFrom());
         ticket.setToLocation(ticketRequest.getTo());
         ticket.setPricePaid(ticketRequest.getPrice());
-
-        UserDto userDto = ticketRequest.getUsers();
-        Users users = UserMapper.mapToUser(userDto, new Users());
-        users.setTicket(List.of(ticket));
-        ticket.setUser(users);
-
-        ticket.setSeat(SeatMapper.mapSeatsFromTicket(ticket, ticketRequest));
         log.debug("Exiting {}:mapToTicket()", className);
         return ticket;
     }
@@ -50,8 +45,6 @@ public class TicketsMapper {
         UserDto userDto = UserMapper.mapToUserDto(ticket.getUser(), new UserDto());
         ticketsDto.setUsers(userDto);
 
-        List<SeatsDto> seatDto = SeatMapper.mapToSeatsDto(ticket.getSeat());
-        ticketsDto.setSeats(seatDto);
         log.debug("Exiting {}:mapToTicketsDto()", className);
         return ticketsDto;
     }

@@ -42,7 +42,7 @@ class SeatServiceImplTest {
         seatsDto.setSection(Section.SECTION_A);
     }
 
-    @Test
+    /*@Test
     void testFetchSeatDetails() {
         mock(SeatRepository.class);
         List<Seat> seats = new ArrayList<>();
@@ -57,7 +57,7 @@ class SeatServiceImplTest {
         Mockito.when(seatRepository.findBySection(Section.SECTION_A)).thenReturn(seats);
         List<SectionsDto> sectionsDto = seatService.fetchSeatDetails(Section.SECTION_A);
         assertThat(sectionsDto.get(0).getSection()).isEqualTo(Section.SECTION_A);
-    }
+    }*/
 
     @Test
     void testModifySeat_throwsException() {

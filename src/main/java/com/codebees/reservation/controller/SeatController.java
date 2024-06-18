@@ -12,6 +12,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -29,13 +30,10 @@ import java.util.List;
         description = "REST APIs to fetch seats by section and modify seats for a ticket"
 )
 @RestController
+@AllArgsConstructor
 @RequestMapping(path = "/api/v1/seats/", produces = {MediaType.APPLICATION_JSON_VALUE})
 public class SeatController {
     private final SeatService seatService;
-
-    public SeatController(SeatService seatService) {
-        this.seatService = seatService;
-    }
 
     @Operation(
             summary = "REST API to fetch seat details for a section",
@@ -93,4 +91,6 @@ public class SeatController {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(new ResponseDto(Constants.STATUS_SUCCESS, Constants.SUCCESS_MESSAGE));
     }
+
+    // Limit the seats based on section
 }

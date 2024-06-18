@@ -20,7 +20,7 @@ public class SeatMapper {
      * @param ticketsDto - API
      * @return - List of Seat Entity
      */
-    public static List<Seat> mapSeatsFromTicket(Ticket ticket, TicketsDto ticketsDto) {
+    /*public static List<Seat> mapSeatsFromTicket(Ticket ticket, TicketsDto ticketsDto, int seatNumber) {
         log.debug("Entering {}:mapSeatsFromTicket()", className);
         List<Seat> finalSeat = new ArrayList<>();
         List<Seat> seatsFromTicket = mapToSeats(ticketsDto.getSeats());
@@ -28,18 +28,19 @@ public class SeatMapper {
             Seat mappedSeat = new Seat();
             mappedSeat.setTicket(ticket);
             mappedSeat.setSection(seat.getSection());
+            mappedSeat.setSeatNo(++seatNumber);
             finalSeat.add(mappedSeat);
         }
         log.debug("Exiting {}:mapSeatsFromTicket()", className);
         return finalSeat;
-    }
+    }*/
 
     /**
      * Converts seat entity to API response object
      * @param seats - Entity list
      * @return - API response list
      */
-    public static List<SeatsDto> mapToSeatsDto(List<Seat> seats) {
+    /*public static List<SeatsDto> mapToSeatsDto(List<Seat> seats) {
         log.debug("Entering {}:mapToSeatsDto()", className);
         List<SeatsDto> seatsDto = new ArrayList<>();
         for(Seat seat: seats) {
@@ -49,14 +50,14 @@ public class SeatMapper {
         }
         log.debug("Exiting {}:mapToSeatsDto()", className);
         return seatsDto;
-    }
+    }*/
 
     /**
      * Converts API request to entity object to persist in DB
      * @param seatsDto - API object
      * @return - entity
      */
-    public static List<Seat> mapToSeats(List<SeatsDto> seatsDto) {
+    /*public static List<Seat> mapToSeats(List<SeatsDto> seatsDto) {
         log.debug("Entering {}:mapToSeats()", className);
         List<Seat> seats = new ArrayList<>();
         for(SeatsDto seatDto: seatsDto) {
@@ -66,7 +67,7 @@ public class SeatMapper {
         }
         log.debug("Exiting {}:mapToSeats()", className);
         return seats;
-    }
+    }*/
 
     /**
      * Forms a customized object which holds information to populate user, ticket and seat data

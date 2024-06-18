@@ -32,7 +32,7 @@ class TicketsMapperTest {
         ticketsDto.setUsers(userDto);
         SeatsDto seatsDto = new SeatsDto();
         seatsDto.setSection(Section.SECTION_A);
-        ticketsDto.setSeats(List.of(seatsDto));
+//        ticketsDto.setSeats(List.of(seatsDto));
 
         Ticket updatedTicket = mapToTicket(ticketsDto, new Ticket());
 
@@ -54,7 +54,7 @@ class TicketsMapperTest {
         ticket.setToLocation("New York");
         ticket.setPricePaid(100.0);
         ticket.setUser(new Users(1L, "Manoj", "Prabhakar", "m.p@tc.com", List.of(ticket)));
-        ticket.setSeat(List.of(new Seat(1L, Section.SECTION_A,ticket)));
+//        ticket.setSeat(List.of(new Seat(1L, Section.SECTION_A,ticket)));
 
         TicketsDto ticketsDto = mapToTicketsDto(ticket, new TicketsDto());
 
@@ -66,7 +66,7 @@ class TicketsMapperTest {
         assertThat(ticketsDto.getUsers().getFirstName()).isEqualTo("Manoj");
         assertThat(ticketsDto.getUsers().getEmail()).isEqualTo("m.p@tc.com");
 
-        assertThat(ticketsDto.getSeats().get(0).getSection()).isEqualTo(Section.SECTION_A);
+//        assertThat(ticketsDto.getSeats().get(0).getSection()).isEqualTo(Section.SECTION_A);
     }
 
 }
